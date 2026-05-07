@@ -29,8 +29,16 @@ function Acasa() {
       <br />
 
       <Link to="/favorite-pisici">
-        <button>Pisici Favorite</button>
+        <button>Pisici Poze Favorite</button>
       </Link>
+
+      <br />
+      <br />
+
+      <Link to="/favorite-caini">
+        <button>Caini Poze Favorite</button>
+      </Link>
+
     </div>
   );
 }
