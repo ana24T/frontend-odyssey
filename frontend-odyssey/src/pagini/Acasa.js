@@ -24,6 +24,13 @@ function Acasa() {
       <Link to="/glume">
         <button>Glume</button>
       </Link>
+
+      <br />
+      <br />
+
+      <Link to="/favorite-pisici">
+        <button>Pisici Favorite</button>
+      </Link>
     </div>
   );
 }

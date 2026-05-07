@@ -13,6 +13,19 @@ function Pisici() {
     setPisica(date[0].url);
   };
 
+  const adaugaLaFavorite = () => {
+    const favorite = JSON.parse(
+      localStorage.getItem("favoritePisici")
+    ) || [];
+
+    favorite.push(pisica);
+
+    localStorage.setItem(
+      "favoritePisici",
+      JSON.stringify(favorite)
+    );
+  };
+
   useEffect(() => {
     iaPisica();
   }, []);
@@ -26,7 +39,16 @@ function Pisici() {
       <br />
       <br />
 
-      <button onClick={iaPisica}>Alta pisica</button>
+      <button onClick={iaPisica}>
+        Alta pisica
+      </button>
+
+      <br />
+      <br />
+
+      <button onClick={adaugaLaFavorite}>
+        Adauga la favorite
+      </button>
     </div>
   );
 }

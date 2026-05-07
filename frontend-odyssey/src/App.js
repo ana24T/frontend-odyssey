@@ -5,6 +5,7 @@ import Pisici from "./pagini/Pisici";
 import Caini from "./pagini/Caini";
 import Glume from "./pagini/Glume";
 
+import FavoritePisici from "./pagini/FavoritePisici";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
 
         <Route path="/glume" element={<Glume />} />
 
+        <Route path="/favorite-pisici" element={<FavoritePisici />} />
       </Routes>
     </BrowserRouter>
   );
