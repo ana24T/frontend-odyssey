@@ -11,9 +11,19 @@ function FavoriteCaini() {
     setFavorite(date);
   }, []);
 
+  const stergeTot = () => {
+    localStorage.removeItem("favoriteCaini");
+    setFavorite([]);
+  };
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Caini Favorite</h1>
+
+      <button onClick={stergeTot}>Sterge tot</button>
+
+      <br />
+      <br />
 
       {favorite.map((caine, index) => (
         <img

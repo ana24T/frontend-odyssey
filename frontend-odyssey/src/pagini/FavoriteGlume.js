@@ -11,9 +11,16 @@ function FavoriteGlume() {
     setFavorite(date);
   }, []);
 
+  const stergeTot = () => {
+    localStorage.removeItem("favoriteGlume");
+    setFavorite([]);
+  };
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Glume Favorite</h1>
+
+      <button onClick={stergeTot}>Sterge tot</button>
 
       {favorite.map((g, index) => (
         <p key={index}>{g}</p>

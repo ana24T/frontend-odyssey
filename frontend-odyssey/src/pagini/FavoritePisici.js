@@ -11,9 +11,19 @@ function FavoritePisici() {
     setFavorite(date);
   }, []);
 
+  const stergeTot = () => {
+    localStorage.removeItem("favoritePisici");
+    setFavorite([]);
+  };
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Pisici Favorite</h1>
+
+      <button onClick={stergeTot}>Sterge tot</button>
+
+      <br />
+      <br />
 
       {favorite.map((pisica, index) => (
         <img
