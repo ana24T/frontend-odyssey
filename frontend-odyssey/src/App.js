@@ -7,6 +7,7 @@ import Glume from "./pagini/Glume";
 
 import FavoritePisici from "./pagini/FavoritePisici";
 import FavoriteCaini from "./pagini/FavoriteCaini";
+import FavoriteGlume from "./pagini/FavoriteGlume";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path="/favorite-pisici" element={<FavoritePisici />} />
 
         <Route path="/favorite-caini" element={<FavoriteCaini />} />
+
+        <Route path="/favorite-glume" element={<FavoriteGlume />} />
       </Routes>
     </BrowserRouter>
   );

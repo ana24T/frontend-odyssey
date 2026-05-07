@@ -13,6 +13,19 @@ function Glume() {
     setGluma(date.setup + " - " + date.punchline);
   };
 
+  const adaugaLaFavorite = () => {
+    const favorite = JSON.parse(
+      localStorage.getItem("favoriteGlume")
+    ) || [];
+
+    favorite.push(gluma);
+
+    localStorage.setItem(
+      "favoriteGlume",
+      JSON.stringify(favorite)
+    );
+  };
+
   useEffect(() => {
     iaGluma();
   }, []);
@@ -24,6 +37,11 @@ function Glume() {
       <p>{gluma}</p>
 
       <button onClick={iaGluma}>Alta gluma</button>
+      
+      <br />
+      <br />
+      
+      <button onClick={adaugaLaFavorite}>Adauga la favorite</button>
     </div>
   );
 }

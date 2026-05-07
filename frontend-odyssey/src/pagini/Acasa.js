@@ -39,6 +39,14 @@ function Acasa() {
         <button>Caini Poze Favorite</button>
       </Link>
 
+      <br />
+      <br />
+
+      {/* Butonul nou pentru glume favorite */}
+      <Link to="/favorite-glume">
+        <button>Glume Favorite</button>
+      </Link>
+
     </div>
   );
 }
