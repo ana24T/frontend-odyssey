@@ -8,7 +8,7 @@ function Caini() {
   });
 
   useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/image/random/6")
+    fetch("https://dog.ceo/api/breeds/image/random/10")
       .then((res) => res.json())
       .then((data) => {
         if (data.message) {

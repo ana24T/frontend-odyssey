@@ -11,7 +11,7 @@ function Glume() {
     // Luăm 5 glume de la un API public
     fetch("https://official-joke-api.appspot.com/jokes/ten")
       .then((res) => res.json())
-      .then((data) => setGlume(data.slice(0, 5)))
+      .then((data) => setGlume(data.slice(0, 10)))
       .catch((err) => console.log(err));
   }, []);
 
