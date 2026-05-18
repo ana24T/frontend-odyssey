@@ -41,7 +41,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Acasa />} />
+          <Route path="/" element={<Acasa darkMode={darkMode} />} />
           <Route path="/pisici" element={<Pisici />} />
           <Route path="/caini" element={<Caini />} />
           <Route path="/glume" element={<Glume />} />

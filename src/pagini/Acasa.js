@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Acasa() {
+function Acasa({ darkMode }) {
   const randStil = {
     display: "flex",
     justifyContent: "center",
@@ -27,7 +27,7 @@ function Acasa() {
           <button>Pisici</button>
         </Link>
         <Link to="/caini">
-          <button>Câini</button>
+          <button>Caini</button>
         </Link>
         <Link to="/glume">
           <button>Glume</button>
@@ -36,8 +36,14 @@ function Acasa() {
 
       <div style={sectiunePrezentareStil}>
         <div style={{ flex: 1 }}>
-          <h2 style={{ fontSize: "24px", marginBottom: "10px" }}>Despre aplicația mea</h2>
-          <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555" }}>
+          <h2 style={{ fontSize: "24px", marginBottom: "10px", color: darkMode ? "#fff" : "#000" }}>
+            Despre aplicația mea
+          </h2>
+          <p style={{ 
+            fontSize: "16px", 
+            lineHeight: "1.5", 
+            color: darkMode ? "#ddd" : "#333" 
+          }}>
             Bună! Sunt studentă la Facultatea de Inginerie Electrică și Știința Calculatoarelor și aceasta este aplicația mea realizată în React. 
             Am învățat cum să conectez un API extern pentru a aduce poze amuzante 
             cu animale și glume bune. Aplicația îți permite să explorezi conținutul 
@@ -63,7 +69,7 @@ function Acasa() {
           <button>Pisici Poze Favorite</button>
         </Link>
         <Link to="/favorite-caini">
-          <button>Câini Poze Favorite</button>
+          <button>Caini Poze Favorite</button>
         </Link>
         <Link to="/favorite-glume">
           <button>Glume Favorite</button>
