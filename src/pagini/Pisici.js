@@ -1,54 +1,85 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Pisici() {
-  const [pisica, setPisica] = useState("");
-
-  const iaPisica = async () => {
-    const raspuns = await fetch(
-      "https://api.thecatapi.com/v1/images/search"
-    );
-
-    const date = await raspuns.json();
-
-    setPisica(date[0].url);
-  };
-
-  const adaugaLaFavorite = () => {
-    const favorite = JSON.parse(
-      localStorage.getItem("favoritePisici")
-    ) || [];
-
-    favorite.push(pisica);
-
-    localStorage.setItem(
-      "favoritePisici",
-      JSON.stringify(favorite)
-    );
-  };
+  const [poze, setPoze] = useState([]);
+  const [favorite, setFavorite] = useState(() => {
+    const salvate = localStorage.getItem("favorite-pisici");
+    return salvate ? JSON.parse(salvate) : [];
+  });
 
   useEffect(() => {
-    iaPisica();
+    fetch("https://api.thecatapi.com/v1/images/search?limit=6")
+      .then((res) => res.json())
+      .then((data) => setPoze(data))
+      .catch((err) => console.log(err));
   }, []);
 
+  const toggleFavorit = (pisica) => {
+    const dejaAdaugata = favorite.some((item) => item.id === pisica.id);
+
+    let listaNoua;
+    if (dejaAdaugata) {
+      listaNoua = favorite.filter((item) => item.id !== pisica.id);
+    } else {
+      listaNoua = [...favorite, pisica];
+    }
+
+    setFavorite(listaNoua);
+    localStorage.setItem("favorite-pisici", JSON.stringify(listaNoua));
+  };
+
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Pisici</h1>
-
-      <img src={pisica} width="300" />
-
-      <br />
-      <br />
-
-      <button onClick={iaPisica}>
-        Alta pisica
-      </button>
-
-      <br />
-      <br />
-
-      <button onClick={adaugaLaFavorite}>
-        Adauga la favorite
-      </button>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2>Poze amuzante cu pisici</h2>
+      <div style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "20px",
+        marginTop: "20px"
+      }}>
+        {poze.map((pisica) => {
+          const esteFavorit = favorite.some((item) => item.id === pisica.id);
+          
+          return (
+            <div key={pisica.id} style={{ position: "relative", width: "250px", height: "250px" }}>
+              <img
+                src={pisica.url}
+                alt="Pisica"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+                }}
+              />
+              <button
+                onClick={() => toggleFavorit(pisica)}
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  background: "rgba(255, 255, 255, 0.7)",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                  padding: "0"
+                }}
+              >
+                {esteFavorit ? "❤️" : "🤍"}
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
