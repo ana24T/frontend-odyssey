@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+button {
+  padding: 15px 30px !important;
+  font-size: 17px !important;
+  width: 220px !important; 
+  height: 80px !important;
+  cursor: pointer;
+  border-radius: 10px !important;
+  border: none !important;
+  background-color: #e0e0e0;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease !important; 
+}
+
+button:hover {
+  background-color: #555555 !important; 
+  color: #fff !important; 
+  transform: translateY(-3px); 
+}

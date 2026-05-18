@@ -1,20 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Acasa() {
-  const butonStil = {
-    padding: "20px",
-    fontSize: "16px",
-    cursor: "pointer",
-    borderRadius: "10px",
-    border: "none",
-    backgroundColor: "#e0e0e0", 
-    color: "#000",
-    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-    width: "180px",
-    height: "80px",
-    fontWeight: "bold"
-  };
-
   const randStil = {
     display: "flex",
     justifyContent: "center",
@@ -24,16 +10,15 @@ function Acasa() {
 
   return (
     <div style={{ textAlign: "center", padding: "40px" }}>
-
       <div style={randStil}>
         <Link to="/pisici">
-          <button style={butonStil}>Pisici</button>
+          <button>Pisici</button>
         </Link>
         <Link to="/caini">
-          <button style={butonStil}>Caini</button>
+          <button>Caini</button>
         </Link>
         <Link to="/glume">
-          <button style={butonStil}>Glume</button>
+          <button>Glume</button>
         </Link>
       </div>
 
@@ -43,13 +28,13 @@ function Acasa() {
 
       <div style={randStil}>
         <Link to="/favorite-pisici">
-          <button style={butonStil}>Pisici Poze Favorite</button>
+          <button>Pisici Poze Favorite</button>
         </Link>
         <Link to="/favorite-caini">
-          <button style={butonStil}>Caini Poze Favorite</button>
+          <button>Caini Poze Favorite</button>
         </Link>
         <Link to="/favorite-glume">
-          <button style={butonStil}>Glume Favorite</button>
+          <button>Glume Favorite</button>
         </Link>
       </div>
     </div>
