@@ -1,47 +1,79 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Glume() {
-  const [gluma, setGluma] = useState("");
-
-  const iaGluma = async () => {
-    const raspuns = await fetch(
-      "https://official-joke-api.appspot.com/random_joke"
-    );
-
-    const date = await raspuns.json();
-
-    setGluma(date.setup + " - " + date.punchline);
-  };
-
-  const adaugaLaFavorite = () => {
-    const favorite = JSON.parse(
-      localStorage.getItem("favoriteGlume")
-    ) || [];
-
-    favorite.push(gluma);
-
-    localStorage.setItem(
-      "favoriteGlume",
-      JSON.stringify(favorite)
-    );
-  };
+  const [glume, setGlume] = useState([]);
+  const [favorite, setFavorite] = useState(() => {
+    const salvate = localStorage.getItem("favorite-glume");
+    return salvate ? JSON.parse(salvate) : [];
+  });
 
   useEffect(() => {
-    iaGluma();
+    // Luăm 5 glume de la un API public
+    fetch("https://official-joke-api.appspot.com/jokes/ten")
+      .then((res) => res.json())
+      .then((data) => setGlume(data.slice(0, 5)))
+      .catch((err) => console.log(err));
   }, []);
 
+  const toggleFavorit = (gluma) => {
+    const dejaAdaugata = favorite.some((item) => item.id === gluma.id);
+
+    let listaNoua;
+    if (dejaAdaugata) {
+      listaNoua = favorite.filter((item) => item.id !== gluma.id);
+    } else {
+      listaNoua = [...favorite, gluma];
+    }
+
+    setFavorite(listaNoua);
+    localStorage.setItem("favorite-glume", JSON.stringify(listaNoua));
+  };
+
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Glume</h1>
-
-      <p>{gluma}</p>
-
-      <button onClick={iaGluma}>Alta gluma</button>
-      
-      <br />
-      <br />
-      
-      <button onClick={adaugaLaFavorite}>Adauga la favorite</button>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2>Glume amuzante</h2>
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "15px",
+        marginTop: "20px"
+      }}>
+        {glume.map((gluma) => {
+          const esteFavorit = favorite.some((item) => item.id === gluma.id);
+          
+          return (
+            <div key={gluma.id} style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: "500px",
+              padding: "20px",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              borderRadius: "12px",
+              boxShadow: "0 4px 6px rgba(0,0,0,0.05)",
+              textAlign: "left"
+            }}>
+              <p style={{ fontWeight: "bold", margin: "0 0 5px 0", paddingRight: "40px" }}>{gluma.setup}</p>
+              <p style={{ margin: "0", color: "#555", italic: "true" }}>{gluma.punchline}</p>
+              
+              <button
+                onClick={() => toggleFavorit(gluma)}
+                style={{
+                  position: "absolute",
+                  top: "15px",
+                  right: "15px",
+                  background: "none",
+                  border: "none",
+                  fontSize: "22px",
+                  cursor: "pointer"
+                }}
+              >
+                {esteFavorit ? "❤️" : "🤍"}
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
