@@ -27,7 +27,7 @@ function Acasa() {
           <button>Pisici</button>
         </Link>
         <Link to="/caini">
-          <button>Caini</button>
+          <button>Câini</button>
         </Link>
         <Link to="/glume">
           <button>Glume</button>
@@ -63,7 +63,7 @@ function Acasa() {
           <button>Pisici Poze Favorite</button>
         </Link>
         <Link to="/favorite-caini">
-          <button>Caini Poze Favorite</button>
+          <button>Câini Poze Favorite</button>
         </Link>
         <Link to="/favorite-glume">
           <button>Glume Favorite</button>

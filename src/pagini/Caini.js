@@ -1,54 +1,93 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Caini() {
-  const [caine, setCaine] = useState("");
-
-  const iaCaine = async () => {
-    const raspuns = await fetch(
-      "https://dog.ceo/api/breeds/image/random"
-    );
-
-    const date = await raspuns.json();
-
-    
-    setCaine(date.message); 
-  };
-  
-  const adaugaLaFavorite = () => {
-    const favorite = JSON.parse(
-    
-        localStorage.getItem("favoriteCaini")
-    ) || [];
-
-    favorite.push(caine);
-
-    localStorage.setItem(
-        "favoriteCaini",
-        JSON.stringify(favorite)
-    );
-  };
+  const [poze, setPoze] = useState([]);
+  const [favorite, setFavorite] = useState(() => {
+    const salvate = localStorage.getItem("favorite-caini");
+    return salvate ? JSON.parse(salvate) : [];
+  });
 
   useEffect(() => {
-    iaCaine();
+    fetch("https://dog.ceo/api/breeds/image/random/6")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          const pozeFormatate = data.message.map((url, index) => ({
+            id: `dog-${index}-${Date.now()}`,
+            url: url
+          }));
+          setPoze(pozeFormatate);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
+  const toggleFavorit = (caine) => {
+    const dejaAdaugata = favorite.some((item) => item.url === caine.url);
+
+    let listaNoua;
+    if (dejaAdaugata) {
+      listaNoua = favorite.filter((item) => item.url !== caine.url);
+    } else {
+      listaNoua = [...favorite, caine];
+    }
+
+    setFavorite(listaNoua);
+    localStorage.setItem("favorite-caini", JSON.stringify(listaNoua));
+  };
+
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Caini</h1>
-
-      <img src={caine} width="300" alt="caine" />
-
-      <br />
-      <br />
-
-      <button onClick={iaCaine}>
-        Alt caine
-      </button>
-      <br />
-      <br />
-      <button onClick={adaugaLaFavorite}>
-        Adauga la favorite
-      </button>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2>Poze amuzante cu câini</h2>
+      <div style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "20px",
+        marginTop: "20px"
+      }}>
+        {poze.map((caine) => {
+          const esteFavorit = favorite.some((item) => item.url === caine.url);
+          
+          return (
+            <div key={caine.id} style={{ position: "relative", width: "250px", height: "250px" }}>
+              <img
+                src={caine.url}
+                alt="Caine"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+                }}
+              />
+              <button
+                onClick={() => toggleFavorit(caine)}
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  background: "rgba(255, 255, 255, 0.7)",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                  padding: "0"
+                }}
+              >
+                {esteFavorit ? "❤️" : "🤍"}
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

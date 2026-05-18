@@ -60,7 +60,7 @@ function App() {
           fontSize: "14px",
           opacity: 0.8
         }}>
-          © 2026 Proiect realizat de student - Frontend Odyssey. Toate drepturile rezervate.
+          © 2026 Proiect realizat de Brechler Anamaria - Frontend Odyssey. Toate drepturile rezervate.
         </footer>
       </BrowserRouter>
     </div>
