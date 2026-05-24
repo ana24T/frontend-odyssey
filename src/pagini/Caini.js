@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Caini() {
   const navigate = useNavigate();
+  const [notificare, setNotificare] = useState("");
   const [poze, setPoze] = useState([]);
   const [favorite, setFavorite] = useState(() => {
     const salvate = localStorage.getItem("favorite-caini");
@@ -31,10 +32,13 @@ function Caini() {
     let listaNoua;
     if (dejaAdaugata) {
       listaNoua = favorite.filter((item) => item.url !== caine.url);
+      setNotificare("Ai scos poza de la favorite!");
     } else {
       listaNoua = [...favorite, caine];
+      setNotificare("Ai adăugat o poză la favorite!");
     }
 
+    setTimeout(() => setNotificare(""), 3000);
     setFavorite(listaNoua);
     localStorage.setItem("favorite-caini", JSON.stringify(listaNoua));
   };
@@ -44,6 +48,11 @@ function Caini() {
       <button onClick={() => navigate(-1)} className="btn-back">
   ⬅ Înapoi
 </button>
+     {notificare && (
+  <div className="alerta-feedback">
+    {notificare}
+  </div>
+)}
       <h2>Poze amuzante cu câini</h2>
       <div style={{
         display: "flex",

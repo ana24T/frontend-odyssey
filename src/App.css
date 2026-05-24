@@ -78,3 +78,29 @@ button:hover, .btn:hover, .nav-button:hover {
   background-color: #4c303e !important;
   border-color: #ffffff !important;
 }
+
+.alerta-feedback {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f0abfc;
+  color: #000000;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: fadeInOut 0.3s ease-in-out;
+  font-size: 16px;
+}
+
+.dark .alerta-feedback {
+  background-color: #4a283d;
+  color: #ffffff;
+}
+
+@keyframes fadeInOut {
+  0% { top: 0px; opacity: 0; }
+  100% { top: 20px; opacity: 1; }
+}

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function Pisici() {
   const navigate = useNavigate();
   const [poze, setPoze] = useState([]);
+  const [notificare, setNotificare] = useState("");
   const [favorite, setFavorite] = useState(() => {
     const salvate = localStorage.getItem("favorite-pisici");
     return salvate ? JSON.parse(salvate) : [];
@@ -22,19 +23,23 @@ function Pisici() {
     let listaNoua;
     if (dejaAdaugata) {
       listaNoua = favorite.filter((item) => item.id !== pisica.id);
+      setNotificare("Ai scos poza de la favorite!");
     } else {
       listaNoua = [...favorite, pisica];
+      setNotificare("Ai adăugat o poză la favorite!");
     }
 
+    setTimeout(() => setNotificare(""), 3000);
     setFavorite(listaNoua);
     localStorage.setItem("favorite-pisici", JSON.stringify(listaNoua));
   };
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
+      {notificare && <div className="alerta-feedback">{notificare}</div>}
       <button onClick={() => navigate(-1)} className="btn-back">
-  ⬅ Înapoi
-</button>
+        ⬅ Înapoi
+      </button>
       <h2>Poze amuzante cu pisici</h2>
       <div style={{
         display: "flex",
