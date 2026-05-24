@@ -198,3 +198,23 @@ button:hover, .btn:hover, .nav-button:hover {
 
 .dark .text-gluma-s { color: #ffffff !important; }
 .dark .text-gluma-p { color: #fbcfe8 !important; }
+
+@media (max-width: 640px) {
+  div[style*="display: flex"][style*="flex-direction: row"],
+  div[style*="display: flex"]:not([style*="column"]),
+  .home-container,
+  .sectiune-principala {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  img, 
+  .home-image,
+  div[style*="width"] img {
+    margin-top: 20px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+  }
+}
