@@ -104,3 +104,97 @@ button:hover, .btn:hover, .nav-button:hover {
   0% { top: 0px; opacity: 0; }
   100% { top: 20px; opacity: 1; }
 }
+
+.pagina-containere-globale {
+  padding: 40px 20px !important;
+  text-align: center;
+}
+
+.titlu-pagina {
+  margin-bottom: 30px;
+}
+
+.container-lista-glume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; 
+  margin-top: 20px;
+  width: 100%;
+}
+
+.card-gluma-individual {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  padding: 25px; 
+  background-color: #f472b6 !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  border: 2px solid #db2777;
+  transition: transform 0.2s ease;
+}
+
+.text-setup-gluma {
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  padding-right: 45px;
+  color: #000000 !important;
+}
+
+.text-punchline-gluma {
+  margin: 0;
+  color: #4a044e !important;
+  font-style: italic;
+}
+
+.btn-favorit-gluma {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 24px !important;
+  cursor: pointer !important;
+}
+
+.dark .card-gluma-individual {
+  background-color: #1e1118 !important; 
+  border-color: #3b1d2c;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .text-setup-gluma {
+  color: #ffffff !important; 
+}
+
+.dark .text-punchline-gluma {
+  color: #fbcfe8 !important; 
+}
+
+.card-gluma-stil {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  padding: 25px; 
+  background-color: #e9d5ff !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border: 3px solid #c026d3 !important;
+  transition: transform 0.2s ease;
+}
+
+.text-gluma-s { color: #000000 !important; }
+.text-gluma-p { color: #4a044e !important; }
+
+.dark .card-gluma-stil {
+  background-color: #1e1118 !important; 
+  border-color: #3b1d2c !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .text-gluma-s { color: #ffffff !important; }
+.dark .text-gluma-p { color: #fbcfe8 !important; }

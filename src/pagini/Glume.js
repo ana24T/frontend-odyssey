@@ -35,7 +35,7 @@ function Glume() {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div style={{ padding: "40px 20px", textAlign: "center" }}>
       {notificare && <div className="alerta-feedback">{notificare}</div>}
       <button onClick={() => navigate(-1)} className="btn-back">
         ⬅ Înapoi
@@ -45,32 +45,23 @@ function Glume() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "15px",
+        gap: "25px",
         marginTop: "20px"
       }}>
         {glume.map((gluma) => {
           const esteFavorit = favorite.some((item) => item.id === gluma.id);
           
           return (
-            <div key={gluma.id} style={{
-              position: "relative",
-              width: "100%",
-              maxWidth: "500px",
-              padding: "20px",
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
-              borderRadius: "12px",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.05)",
-              textAlign: "left"
-            }}>
-              <p style={{ fontWeight: "bold", margin: "0 0 5px 0", paddingRight: "40px" }}>{gluma.setup}</p>
-              <p style={{ margin: "0", color: "#555", italic: "true" }}>{gluma.punchline}</p>
+            <div key={gluma.id} className="card-gluma-stil">
+              <p className="text-gluma-s">{gluma.setup}</p>
+              <p className="text-gluma-p">{gluma.punchline}</p>
               
               <button
                 onClick={() => toggleFavorit(gluma)}
                 style={{
                   position: "absolute",
-                  top: "15px",
-                  right: "15px",
+                  top: "20px",
+                  right: "20px",
                   background: "none",
                   border: "none",
                   fontSize: "22px",
