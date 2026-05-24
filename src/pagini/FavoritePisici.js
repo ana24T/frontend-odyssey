@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function FavoritePisici() {
+  const navigate = useNavigate();
   const [favorite, setFavorite] = useState([]);
 
   useEffect(() => {
@@ -19,6 +21,9 @@ function FavoritePisici() {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
+      <button onClick={() => navigate(-1)} className="btn-back">
+  ⬅ Înapoi
+</button>
       <h2>Pisicile mele favorite ❤️</h2>
       
       {favorite.length === 0 ? (

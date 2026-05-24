@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Pisici() {
+  const navigate = useNavigate();
   const [poze, setPoze] = useState([]);
   const [favorite, setFavorite] = useState(() => {
     const salvate = localStorage.getItem("favorite-pisici");
@@ -30,6 +32,9 @@ function Pisici() {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
+      <button onClick={() => navigate(-1)} className="btn-back">
+  ⬅ Înapoi
+</button>
       <h2>Poze amuzante cu pisici</h2>
       <div style={{
         display: "flex",

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Glume() {
+  const navigate = useNavigate();
   const [glume, setGlume] = useState([]);
   const [favorite, setFavorite] = useState(() => {
     const salvate = localStorage.getItem("favorite-glume");
@@ -31,6 +33,9 @@ function Glume() {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
+      <button onClick={() => navigate(-1)} className="btn-back">
+  ⬅ Înapoi
+</button>
       <h2>Glume amuzante</h2>
       <div style={{
         display: "flex",

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 function Caini() {
+  const navigate = useNavigate();
   const [poze, setPoze] = useState([]);
   const [favorite, setFavorite] = useState(() => {
     const salvate = localStorage.getItem("favorite-caini");
@@ -38,6 +41,9 @@ function Caini() {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
+      <button onClick={() => navigate(-1)} className="btn-back">
+  ⬅ Înapoi
+</button>
       <h2>Poze amuzante cu câini</h2>
       <div style={{
         display: "flex",
