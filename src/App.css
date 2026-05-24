@@ -18,6 +18,7 @@ body, html {
   background: linear-gradient(135deg, #2d1b24 0%, #1a0f14 100%) !important;
   color: #fff !important;
 }
+
 .btn-back {
   display: block;
   width: fit-content;
@@ -25,7 +26,7 @@ body, html {
   margin-right: auto;
   margin-bottom: 25px;
   background-color: transparent;
-  border: 3px solid #c026d3; /* Roz închis */
+  border: 3px solid #c026d3;
   color: #c026d3;
   padding: 10px 22px;
   border-radius: 20px;
@@ -35,7 +36,7 @@ body, html {
 }
 
 .btn-back:hover {
-  background-color:#c026d3;
+  background-color: #c026d3;
   color: white;
 }
 
@@ -47,4 +48,33 @@ body, html {
 .dark .btn-back:hover {
   background-color: #fdf4ff;
   color: #2d1b24;
+}
+
+button, .btn, .nav-button {
+  border: 4px solid #c026d3 !important;
+  padding: 12px 28px !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  border-radius: 12px !important;      
+  background-color: #f1f5f9 !important; 
+  color: #c026d3 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+button:hover, .btn:hover, .nav-button:hover {
+  background-color: #cbd5e1 !important;
+  color: #701a75 !important;
+  border-color: #701a75 !important;
+}
+
+.dark button, .dark .btn, .dark .nav-button {
+  border-color: #fdf4ff !important;
+  background-color: #34212b !important;
+  color: #fdf4ff !important;
+}
+
+.dark button:hover, .dark .btn:hover, .dark .nav-button:hover {
+  background-color: #4c303e !important;
+  border-color: #ffffff !important;
 }
